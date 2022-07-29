@@ -1,0 +1,13 @@
+Juste à cause de ça, j'ai perdu 3 jours de code
+ A mettre sur INDEX 
+ 💕👌
+ app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+ 💕👌
+  & à éviter de mettre app.use(bodyParser.json())
+  Il faut sinon plus mettre app.use(bodyParser.urlencoded({extended: false}))
+
+
+  ####
+  LA suite de ce chapitre3  de SEQUELIZE TRAVERSY sera d'apprendre  sur YOUTUBE
+  => Node.js With Passport Authentication | Full Project

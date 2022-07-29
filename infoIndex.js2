@@ -1,0 +1,63 @@
+Youtube du SEQUELIZE ORM => 
+
+Pour installer sequelize, 
+=> Le tuto => https://stackoverflow.com/questions/58067349/how-to-solve-sequelize-command-not-found
+On fait : 
+ npm install --save sequelize
+npm install --save sequelize-cli
+Puis sequelize init ou // ou npx sequelize init
+
+###
+#
+Pour installer MYSQL WORKBENCH => https://www.youtube.com/watch?v=K1SOagDC3Xg
+#
+Une fois installée MYSQL WORKBENCH & si ça marque NO CONNECTION ESTABLISHED 👌 => se réferer https://www.youtube.com/watch?v=TRispu6xgiA
+Dans barre de demmarer, tapez SERVICES puis aller chercher MYSQL80, on change le nom en "MANUEL" d'abord puis on clique droit puis sur DEMARRER 💕❤
+
+###
+Pour la creation du User : 👌Utiliser npx à l'avance (sinon ca ne marche pas) => npx sequelize model:create --attributes "pseudo:string email:string password:string bio:string picture:string following:string followers:string  isAdmin:boolean" --name User
+
+=> 💕👌 Ici npx sequelize model:create --attributes "title:string technologies:string budget:string description:string contact_email:string" --name Gigs  💕👌
+
+##
+Pour le POST => npx sequelize model:create --attributes "userId:integer message:string picture:string video:string likes:integer" --name Post
+
+##
+Puis on corrige les migrations && les models
+
+##
+On crée les 3 databases grâce au Commande client de MYSQL
+
+Puis npx sequelize db:migrate
+//
+Ensuite on va le controller AUTH (n'oublions pas de faire USE 'LE_NOM_DATABASE dans la commande client)
+
+###
+###
+Dans le WATERFALL de la création de POST, on va supprimer le idUsers(je l'ai appelé userId) dans models/Users puis on va la renommer sur migration/User en userId
+👌 Ensuite on va supprimer l'ancienne BDD pour la reprogrammer => npx sequelize db:drop puis npx sequelize db:create puis npx sequelize db:migrate 👌👌👌
+
+👌👌👌 Trés important de supprimer le userId qui était contenu dans le models/Post parce que si on le laisse et qu'on fait le TEST de l'index ça nous mettra une erreur
+
+### INSTALLATION DU LIKES 
+#
+npx sequelize model:create --attributes "" --name Like
+On corrige le model & migration de LIKES => 👌 Et bien rajouter dans la migration => onUpdate: 'cascade', onDelete: 'cascade'      
+Ensuite npx sequelize db:migrate
+Puis verifier sur le Reverse Engeneering
+
+#
+On va rajouter dans models && migrations => isLike:  DataTypes.INTEGER
+=> ensuite pour la vaider, on fait =>
+
+ 👌👌👌 NPX SEQUELIZE DB:MIGRATE:UNDO puis NPX SEQUELIZE DB:MIGRATE
+NPX SEQUELIZE DB:MIGRATE:UNDO 👌👌👌 nous permet de detruire la table LIKES & de la recréer avec 
+NPX SEQUELIZE DB:MIGRATE
+(cette methode est trés difficile puisque l'on n'a pas fait la methode d'enregistrer le user en BEARER)
+Donc on va faire une meilleure méthode où l'on n'a pas besoin de isLike. Donc on le supprime de SEQUELIZE puis on va copier 
+=> => 👌👌👌 https://stackoverflow.com/questions/64859383/how-can-users-like-and-unlike-each-others-post-using-sequelize-postgres-nodejs
+//On met du coup sur le body du Postman juste le userId Exemple: "userId": 2 && le resultat nous donne le userId & le postId du Like
+
+#
+Pour supprimer et recréer la BDD =>
+NPX SEQUELIZE DB:DROP puis NPX SEQUELIZE DB:CREATE puis NPX SEQUELIZE DB:MIGRATE

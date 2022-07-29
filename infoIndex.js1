@@ -1,0 +1,40 @@
+Commençons toujours par installer NPM INIT avant de faire NPM SEQUELIZE SEQUELIZE-CLI && NPX  SEQUELIZE INIT
+
+On va utiliser la méthode Sequelize avec SEQUELIZE CLI 
+(Voir infoIndex.js2 pour toute la creation de SEQUELIZE)
+
+NPM INSTALL EXPRESS EXPRESS-HANDLEBARS BODY-PARSER MYSQL2 PG PG-HSTORE COLOR && NPM I -D NODEMON
+
+###
+Au controller POSTAGIG, attention au model y'a 's' à const {Gigs} = models()
+Aprés avoir fait le GET-ALL && le GET-POST, on crée le dossier HANDLEBARS. Bien mettre dans INDEX.JS exphbs.engine()
+
+###
+Pour comprendre les HANDLEBARS =>  GITHUB EXPRESS HANDLEBARS ou REGARDER LES 15 DERNIERES DU YOUTUBE TRAVERSY EXPRESS
+Dans le dossier LAYOUTS, on a deux fichier MAIN (on y injecte un dossier HTML avec sa réf de CSS quon a mis dans PUBLIC) && LANDING (le LANDING est le HTML juste de la page HOME) 
+
+Le views est composé du LAYOUTS & des 3 fichiers qui constituent le header de la page principale (MAIN.HANDLEBARS) à savoir HOME, GIGS et ADD
+
+
+#
+Ensuite on le fichier GIGS.HANDLEBARS puis on le transfére au controller
+
+Ensuite on se crée le DISPLAY ADD GIG dans le controller et son res.render sera 'add' =>ADD.HANDLEBARS
+res.render('x') sera le x.HANDLEBARS que l'on créera
+✌️Pourquoi DISPLAY ADD GIG? parce que l'on ne peut pas utiliser POST pour l'afficher sur le localhost, & donc on le fait passer par GET pour la faire jouer
+
+##
+Pour le home, on le crée sur INDEX & on lui met layout: 'landing' parce que le landing n'a pas de container
+
+
+###
+Sur le chap3:
+On rajoute les erreurs sur le controller puis on l'intégre dans ADD.HANDLEBARS 
+✌️ Pour le ADD.HANDLEBARS :  Le value pose probléme et nous donne "/". Pour le corriger on a mis defaultValue.
+Pour enlever des espaces entre les virgules dans TECHNOLOGIES du POST A GIG dans le CTRL, on peut mettre
+ =>  technologies = technologies.toLowerCase().replace(/,[ ]+/g, ',');
+
+ "
+ On fait ensuite le HOME notmt le GIGS/SEARCH et on lui raméne au BACK le const Op
+ Au BACK, ce qui nous interesse est de taper une téchnologie en tapant sur le input
+
